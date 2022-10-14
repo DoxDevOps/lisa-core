@@ -1,3 +1,6 @@
+import datetime
+
+import jwt as jwt
 from flask import Flask, jsonify, make_response, request
 
 from chatBot.witChat import get_intent_from_wit
@@ -16,7 +19,7 @@ def token_required(f):
         except:
             return jsonify({'message': 'Token is Invalid'}), 403
         return f(*args, **kwargs)
-
+    return decorated
 @app.route('/send_to_bot', methods=['POST', 'GET'])
 def send_to_bot(message):
     """
@@ -34,6 +37,9 @@ def authenticate_me():
     A function that authenticates and validates a request made to the service
     :return:
     """
+    auth = request.authorization
+    if auth and auth.password == "SAMPLE PASSWORD":
+        token =jwt.encode({'user':auth.username, 'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=30)})
     return True
 
 
