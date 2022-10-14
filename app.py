@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify, make_response
 
 from chatBot.witChat import get_intent_from_wit
 
@@ -14,6 +14,11 @@ def send_to_bot(message):
     """
     entities = get_intent_from_wit(message)
     return entities
+
+
+@app.route('/authenticate')
+def authenticate_me():
+    return True
 
 
 if __name__ == "__main__":
