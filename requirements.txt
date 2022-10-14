@@ -1,3 +1,5 @@
 Flask~=2.0.3
 setuptools~=59.6.0
 requests==2.27.1
+
+PyJWT~=2.4.0
