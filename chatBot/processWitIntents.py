@@ -58,7 +58,7 @@ def respond_to_intent(
     expected_intents: dict[int, dict],
     intent_response: dict[str, list],
 ) -> str:
-    """responds to a user accordingly based on intent
+    """responds to a user's intent
 
     Args:
         intents_from_nlp_engine (list[str]): intents from the NLP engine
