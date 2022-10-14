@@ -79,7 +79,12 @@ def respond_to_intent(
             if intent_from_nlp_engine == expected_intent["intent"]:
                 responses.append(expected_intent["response"])
 
-    return random.choice(intent_response[", ".join(responses)])
+    # turn responses to strings separated by commas
+    # check if responses is not empty
+    # if empty, return default response
+    resp = ", ".join(responses) if responses else "null"
+
+    return random.choice(intent_response[responses])
 
 
 # **** Database operations *************
