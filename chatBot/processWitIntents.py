@@ -54,10 +54,20 @@ expected_intents = {
 
 
 def respond_to_intent(
-    intents_from_nlp_engine: list,
+    intents_from_nlp_engine: list[str],
     expected_intents: dict[int, dict],
     intent_response: dict[str, list],
 ) -> str:
+    """responds to a user accordingly based on intent
+
+    Args:
+        intents_from_nlp_engine (list[str]): intents from the NLP engine
+        expected_intents (dict[int, dict]): intents that we are expecting to come in
+        intent_response (dict[str, list]): possible responses
+
+    Returns:
+        str: response choosen randomly
+    """
 
     responses = []
 
