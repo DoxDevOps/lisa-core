@@ -84,7 +84,7 @@ def respond_to_intent(
     # if empty, return default response
     resp = ", ".join(responses) if responses else "null"
 
-    return random.choice(intent_response[responses])
+    return random.choice(intent_response[resp])
 
 
 # **** Database operations *************
