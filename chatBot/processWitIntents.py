@@ -53,7 +53,11 @@ expected_intents = {
 }
 
 
-def respond_to_intent(intents_from_nlp_engine, expected_intents, intent_response):
+def respond_to_intent(
+    intents_from_nlp_engine: list,
+    expected_intents: dict[int, dict],
+    intent_response: dict[str, list],
+) -> str:
 
     responses = []
 
@@ -65,7 +69,7 @@ def respond_to_intent(intents_from_nlp_engine, expected_intents, intent_response
             if intent_from_nlp_engine == expected_intent["intent"]:
                 responses.append(expected_intent["response"])
 
-    return random.choice(intent_response[responses])
+    return random.choice(intent_response[", ".join(responses)])
 
 
 # **** Database operations *************
