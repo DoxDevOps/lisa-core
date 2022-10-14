@@ -55,17 +55,17 @@ expected_intents = {
 
 def respond_to_intent(intents_from_nlp_engine, expected_intents, intent_response):
 
-    responses = intent_response
+    responses = []
 
     if not intents_from_nlp_engine:
-        return responses["null"]
+        return random.choice(intent_response["null"])
 
     for intent_from_nlp_engine in intents_from_nlp_engine:
         for expected_intent in expected_intents:
             if intent_from_nlp_engine == expected_intent["intent"]:
                 responses.append(expected_intent["response"])
 
-    return random.choice(responses)
+    return random.choice(intent_response[responses])
 
 
 # **** Database operations *************
