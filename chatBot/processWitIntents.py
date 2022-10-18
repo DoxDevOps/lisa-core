@@ -28,15 +28,15 @@ bot_greeting_intent_check_ticket = intent_response[
     "greeting:greeting,intent_check_ticket:intention_check_ticket,"
     "check_ticket:check_ticket"
 ]
-bot_greeting_log_ticket = "greeting:greeting,log_ticket:log_ticket"
-bot_greeting_check_ticket = "intent_log_ticket:intent_log_ticket,log_ticket:log_ticket"
-bot_intent_log_ticket = "intent_log_ticket:intent_log_ticket,log_ticket:log_ticket"
-bot_intent_check_ticket = "intent_check_ticket:intent_check_ticket"
-bot_log_ticket = "log_ticket:log_ticket"
-bot_check_ticket = "check_ticket:check_ticket"
+bot_greeting_log_ticket = ["greeting:greeting,log_ticket:log_ticket"]
+bot_greeting_check_ticket = ["intent_log_ticket:intent_log_ticket,log_ticket:log_ticket"]
+bot_intent_log_ticket = ["intent_log_ticket:intent_log_ticket,log_ticket:log_ticket"]
+bot_intent_check_ticket = ["intent_check_ticket:intent_check_ticket"]
+bot_log_ticket = ["log_ticket:log_ticket"]
+bot_check_ticket = ["check_ticket:check_ticket"]
 
 # expected intents
-# for new intents, simple add them to this dict and everythin will still hold
+# for new intents, simple add them to this dict and everything will still hold
 expected_intents = {
     1: {
         "intent": ["greeting:greeting"],
@@ -47,9 +47,17 @@ expected_intents = {
         "response": "intent_log_ticket:intent_log_ticket",
     },
     3: {
-        "intent": "[log_ticket:log_ticket]",
+        "intent": ["log_ticket:log_ticket"],
         "response": "log_ticket:log_ticket",
     },
+    4: {
+        "intent": ["intent_check_ticket:intent_check_ticket"],
+        "response": ["intent_check_ticket:intent_check_ticket"]
+    },
+    5: {
+        "intent": ["check_ticket:check_ticket"],
+        "response": ["check_ticket:check_ticket"]
+    }
 }
 
 

@@ -45,7 +45,7 @@ intent_response = \
             "Please wait for a ticket number",
             "Let me do that for you this " + part_of_day + ". Wait for your issue number please !! "],
 
-        "appreciate:appreciate": ["You are welcome !!", " I am glad i could help !",
+        "appreciate:appreciate": ["You are welcome !!", " I am glad I could help !",
                                   "Any time ! have a good " + part_of_day,
                                   "Cheers !!", "Bye ! have a good " + part_of_day,
                                   "No problem, i enjoyed helping you !!",
