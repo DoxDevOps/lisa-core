@@ -10,10 +10,10 @@ import random
 
 
 def respond_to_intent(
-        intents_from_nlp_engine: list,
-        expected_intents: dict,
-        intent_response: dict,
-) -> str:
+        intents_from_nlp_engine,
+        expected_intents,
+        intent_response,
+):
     """responds to a user's intent
 
     Args:
