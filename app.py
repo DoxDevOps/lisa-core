@@ -20,7 +20,21 @@ auth_password = config["auth_password"]
 app = Flask(__name__)
 
 
+@app.route('/test')
+def test():
+    """
+    Tests if the application is reachable or not
+    :return: json message
+    """
+    return jsonify({"SUCCESS": "The Application is running !!"}), 200
+
+
 def token_required(f):
+    """
+    Checks if a request has a token in it
+    :param f:
+    :return:
+    """
     @wraps(f)
     def decorated(*args, **kwargs):
         token = None
@@ -43,7 +57,7 @@ def token_required(f):
 
 
 @app.route("/send_to_bot")
-# @token_required
+@token_required
 def send_to_bot():
     """
     gets a message and sends it to Bot
@@ -81,4 +95,4 @@ def authenticate_me():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=80)
+    app.run(debug=True, port=8000)
