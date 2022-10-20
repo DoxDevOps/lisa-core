@@ -15,6 +15,8 @@ import jwt
 from config.config import config
 
 secret_key = config["secret_authentication_key"]
+auth_username = config["auth_username"]
+auth_password = config["auth_password"]
 app = Flask(__name__)
 
 
@@ -64,7 +66,7 @@ def authenticate_me():
     :return:
     """
     auth = request.authorization
-    if auth and auth.password == "SAMPLE PASSWORD":
+    if auth and auth.password == auth_password and auth.username == auth_username:
         token = jwt.encode(
             {
                 "user": auth.username,
