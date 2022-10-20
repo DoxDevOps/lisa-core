@@ -1,11 +1,15 @@
+import os
+
 import requests
-from flask import jsonify
 
-from config.config import config
+# from config.config import config
+from dotenv import load_dotenv
 
 
-access_token = config["access_token"]
-wit_url = config["wit_url"]
+load_dotenv()  # load .env file
+
+access_token = os.environ.get("access_token")
+wit_url = os.environ.get("wit_url")
 
 
 def get_intent_from_wit(message_to_wit):

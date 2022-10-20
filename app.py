@@ -3,6 +3,7 @@ Authentication code taken from : https://prettyprinted.com
 """
 import datetime
 import logging
+import os
 
 from flask import Flask, jsonify, request, make_response
 
@@ -12,11 +13,17 @@ from utils.botResponse import intent_response
 from chatBot.witChat import get_intent_from_wit
 from functools import wraps
 import jwt
-from config.config import config
+# from config.config import config
+from dotenv import load_dotenv
 
-secret_key = config["secret_authentication_key"]
-auth_username = config["auth_username"]
-auth_password = config["auth_password"]
+
+load_dotenv()  # load .env file
+
+
+secret_key = os.environ.get("secret_authentication_key")
+auth_username = os.environ.get("auth_username")
+auth_password = os.environ.get("auth_password")
+
 app = Flask(__name__)
 
 
