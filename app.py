@@ -56,7 +56,7 @@ def token_required(f):
         try:
             data = jwt.decode(token, secret_key)
         except Exception as e:
-            logging.info("Authentication failed with exception:" + e)
+            logging.info(f"Authentication failed with exception: {e}")
             return jsonify({"message": "Token is incorrect"}), 403
         return f(*args, **kwargs)
 
