@@ -4,9 +4,11 @@ Authentication code taken from : https://prettyprinted.com
 import datetime
 import logging
 
-
 from flask import Flask, jsonify, request, make_response
 
+from chatBot.processWitIntents import respond_to_intent
+from config.witIntents import expected_intents
+from utils.botResponse import intent_response
 from chatBot.witChat import get_intent_from_wit
 from functools import wraps
 import jwt
@@ -31,7 +33,7 @@ def token_required(f):
         try:
             data = jwt.decode(token, secret_key)
         except Exception as e:
-            logging.info(f"Authentication failed with exception: {e}")
+            logging.info("Authentication failed with exception:" + e)
             return jsonify({"message": "Token is incorrect"}), 403
         return f(*args, **kwargs)
 
@@ -39,7 +41,7 @@ def token_required(f):
 
 
 @app.route("/send_to_bot")
-@token_required
+# @token_required
 def send_to_bot():
     """
     gets a message and sends it to Bot
@@ -50,8 +52,9 @@ def send_to_bot():
     print(message)
     if not message:
         return False
-    entities = get_intent_from_wit(message)
-    return entities
+    entities = get_intent_from_wit(message)  # get all intents from wit.ai
+    response_from_wit = respond_to_intent(entities, expected_intents, intent_response)
+    return response_from_wit
 
 
 @app.route("/authenticate")

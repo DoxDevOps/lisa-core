@@ -19,12 +19,13 @@ def get_intent_from_wit(message_to_wit):
     response = requests.get(wit_url+message_to_wit, headers={"Authorization": access_token})
 
     try:
+        response = response.json()
         entity = list(response['entities'])
 
         return entity
     except:
         pass
-    return jsonify({'result': response.json()})
+    # return jsonify({'result': response.json()})
 
 
 
