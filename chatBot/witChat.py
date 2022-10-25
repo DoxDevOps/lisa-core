@@ -1,8 +1,5 @@
 import os
-
 import requests
-
-
 # from config.config import config
 from dotenv import load_dotenv
 
