@@ -1,8 +1,14 @@
-from utils.timeOfDay import give_me_time_of_day
-from config.config import config
+import os
+
+from timeOfDay import give_me_time_of_day
+from dotenv import load_dotenv
+
+
+load_dotenv()  # load .env file
+
 
 part_of_day = give_me_time_of_day()
-bot_name = config["bot_name"]
+bot_name = os.environ.get("bot_name")
 
 intent_response = \
     {
