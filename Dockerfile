@@ -4,6 +4,7 @@ WORKDIR /lisa-core
 
 COPY requirements.txt requirements.txt
 RUN set -ex \
+    && apk add --no-cache --virtual .build-deps gcc python3-dev musl-dev postgresql-dev build-base \
     && python -m venv /env \
     && /env/bin/pip install --upgrade pip \
     && pip install psycopg2 \
