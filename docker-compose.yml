@@ -6,5 +6,3 @@ services:
       - "80:5000"
     volumes:
       - .:/lisa-core-docker
-    environment:
-      FLASK_DEBUG: "true"
