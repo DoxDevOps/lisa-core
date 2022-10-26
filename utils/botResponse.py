@@ -1,6 +1,6 @@
 import os
 
-from timeOfDay import give_me_time_of_day
+from utils.timeOfDay import give_me_time_of_day
 from dotenv import load_dotenv
 
 
