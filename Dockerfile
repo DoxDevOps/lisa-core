@@ -1,23 +1,11 @@
 # syntax=docker/dockerfile:1
-FROM python:3.6.9-alpine
-WORKDIR /lisa-core-docker
-
-ADD requirements.txt requirements.txt
-RUN set -ex \
-    && apk add --no-cache --virtual .build-deps gcc python3-dev musl-dev postgresql-dev build-base \
-    && python -m venv /env \
-    && /env/bin/pip install --upgrade pip \
-    && pip install psycopg2 \
-    && apk add jpeg-dev zlib-dev libjpeg \
-    && /env/bin/pip install --no-cache-dir -r requirements.txt \
-    && runDeps="$(scanelf --needed --nobanner --recursive /env \
-    | awk '{ gsub(/,/, "\nso:", $2); print "so:" $2 }' \
-    | sort -u \
-    | xargs -r apk info --installed \
-    | sort -u)" \
-    && apk add --virtual rundeps $runDeps \
-    && apk del .build-deps
-
-EXPOSE 80
+FROM python:3.7-alpine
+WORKDIR /code
+ENV FLASK_APP=app.py
+ENV FLASK_RUN_HOST=0.0.0.0
+RUN apk add --no-cache gcc musl-dev linux-headers
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+EXPOSE 5000
 COPY . .
-CMD ["python3", "app.py"]
+CMD ["flask", "run"]

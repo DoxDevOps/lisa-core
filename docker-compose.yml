@@ -1,9 +1,6 @@
-version: "3"
+version: "3.9"
 services:
   web:
-    container_name: lisa-core-app
     build: .
     ports:
-      - "80:80"
-    volumes:
-      - $PWD:/lisa-core-docker
+      - "8000:5000"
