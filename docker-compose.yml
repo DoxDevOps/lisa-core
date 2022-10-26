@@ -6,4 +6,4 @@ services:
     ports:
       - "80:80"
     volumes:
-      - $PWD:/lisa-core
+      - $PWD:/lisa-core-docker

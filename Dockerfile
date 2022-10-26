@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 FROM python:3.6.9-alpine
-WORKDIR /lisa-core
+WORKDIR /lisa-core-docker
 
 ADD requirements.txt requirements.txt
 RUN set -ex \
