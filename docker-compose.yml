@@ -1,8 +1,8 @@
 version: "3"
 services:
   web:
-    build: .
+    build: ./
     ports:
       - "80:80"
     volumes:
-      - .:/lisa-core
+      - $PWD:/lisa-core
