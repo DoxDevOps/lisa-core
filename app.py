@@ -6,11 +6,10 @@ import logging
 import os
 
 from flask import Flask, jsonify, request, make_response
-
-from chatBot.processWitIntents import respond_to_intent
-from config.witIntents import expected_intents
-from utils.botResponse import intent_response
-from chatBot.witChat import get_intent_from_wit
+from .chatBot.processWitIntents import respond_to_intent
+from .config.witIntents import expected_intents
+from .utils.botResponse import intent_response
+from .chatBot.witChat import get_intent_from_wit
 from functools import wraps
 import jwt
 # from config.config import config
