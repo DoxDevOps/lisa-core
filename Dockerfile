@@ -1,8 +1,8 @@
 # syntax=docker/dockerfile:1
-FROM python:3.6.9-alpine
+FROM python:3.8.11-alpine3.13
 WORKDIR /lisa-core
 
-COPY requirements.txt requirements.txt
+ADD requirements.txt requirements.txt
 RUN set -ex \
     && apk add --no-cache --virtual .build-deps gcc python3-dev musl-dev postgresql-dev build-base \
     && python -m venv /env \
