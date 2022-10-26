@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM python:3.8.11-alpine3.13
+FROM python:3.6.9-alpine
 WORKDIR /lisa-core
 
 ADD requirements.txt requirements.txt
