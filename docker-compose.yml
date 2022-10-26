@@ -5,6 +5,6 @@ services:
     ports:
       - "80:5000"
     volumes:
-      - .:/code
+      - .:/lisa-core-docker
     environment:
       FLASK_DEBUG: "true"
