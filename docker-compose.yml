@@ -1,6 +1,7 @@
 version: "3"
 services:
   web:
+    container_name: lisa-core-app
     build: ./
     ports:
       - "80:80"
